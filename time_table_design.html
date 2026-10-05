@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시간표</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Song+Myung&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: black;
+            margin: 20px;
+        }
+
+        table {
+            width: 1000px;
+            margin: 20px;
+            background-color: black;
+            border: 2px solid hotpink;
+        }
+
+        th {
+            height: 50px;
+            border: 1px solid hotpink;
+            background-color: black;
+            color: hotpink;
+            font-family: "Song Myung", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        td {
+            height: 70px;
+            border: 1px solid hotpink;
+            background-color: black;
+            color: white;
+            font-family: "Song Myung", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .time {
+            width: 60px;
+            background-color: black;
+            color: hotpink;
+        }
+
+        .mon {
+            width: 160px;
+        }
+
+        .tue {
+            width: 160px;
+        }
+
+        .wed {
+            width: 240px;
+        }
+
+        .thu {
+            width: 160px;
+        }
+
+        .fri {
+            width: 160px;
+        }
+
+        .chapel {
+            background-color: #3a182c;
+        }
+
+        .web {
+            background-color: #73214f;
+        }
+
+        .vision {
+            background-color: #b92f75;
+        }
+
+        .python {
+            background-color: #581b42;
+        }
+
+        .oop {
+            background-color: #d94f91;
+        }
+
+        .calc {
+            background-color: #8f2d67;
+        }
+
+        .cloud {
+            background-color: #402033;
+        }
+    </style>
+</head>
+
+<body>
+
+<table>
+    <tr>
+        <th class="time"></th>
+        <th class="mon">월</th>
+        <th class="tue">화</th>
+        <th class="wed">수</th>
+        <th class="thu">목</th>
+        <th class="fri">금</th>
+    </tr>
+
+    <tr>
+        <td class="time">9</td>
+        <td class="mon"></td>
+
+        <td class="tue web" rowspan="3">
+            웹프로그래밍<br>
+            바울관303호<br>
+            (AIC프로젝트LAB실)
+        </td>
+
+        <td class="wed"></td>
+        <td class="thu"></td>
+
+        <td class="fri calc" rowspan="3">
+            미적분학<br>
+            제1실습관202호강의실
+        </td>
+    </tr>
+
+    <tr>
+        <td class="time">10</td>
+        <td class="mon"></td>
+        <td class="wed"></td>
+        <td class="thu"></td>
+    </tr>
+
+    <tr>
+        <td class="time">11</td>
+
+        <td class="mon chapel">
+            채플<br>
+            대강당(메인)
+        </td>
+
+        <td class="wed"></td>
+        <td class="thu"></td>
+    </tr>
+
+    <tr>
+        <td class="time">12</td>
+        <td class="mon"></td>
+
+        <td class="tue vision" rowspan="3">
+            컴퓨터비전<br>
+            제1실습관309호<br>
+            (전산원관리)<br>
+            컴퓨터강의실
+        </td>
+
+        <td class="wed"></td>
+        <td class="thu"></td>
+        <td class="fri"></td>
+    </tr>
+
+    <tr>
+        <td class="time">1</td>
+        <td class="mon"></td>
+        <td class="wed"></td>
+
+        <td class="thu oop" rowspan="3">
+            객체지향 프로그래밍<br>
+            제1실습관207호<br>
+            (컴퓨터실습실)
+        </td>
+
+        <td class="fri cloud" rowspan="3">
+            클라우드컴퓨팅<br>
+            제1실습관207호<br>
+            (컴퓨터실습실)
+        </td>
+    </tr>
+
+    <tr>
+        <td class="time">2</td>
+
+        <td class="mon python" rowspan="3">
+            컴퓨팅 사고 :<br>
+            Python 프로그래밍<br>
+            바울관303호<br>
+            (AIC프로젝트LAB실)
+        </td>
+
+        <td class="wed"></td>
+    </tr>
+
+    <tr>
+        <td class="time">3</td>
+        <td class="wed"></td>
+    </tr>
+
+    <tr>
+        <td class="time">4</td>
+        <td class="tue"></td>
+        <td class="wed"></td>
+        <td class="thu"></td>
+        <td class="fri"></td>
+    </tr>
+</table>
+
+</body>
+</html>
