@@ -7,13 +7,14 @@
 </head>
 <script>
     
-    let number = prompt('정수를 입력하세요.');
+    /* let number = prompt('정수를 입력하세요.');
     /*if( number % 2 == 0) {
         alert('짝수입니다.');
     } else {
         alert('홀수입니다.');
     }*/
-    if( number >= 90) {
+
+    /* if( number >= 90) {
         alert('A입니다.');
     } 
     else if( number >= 80) {
@@ -27,9 +28,53 @@
     } 
     else {
         alert('F입니다.');
-    }
+    } */
+
+    /* switch ( parseInt(number / 10) ) {
+        case 10:
+        case 9:
+            alert('A입니다.');
+            break;
+        case 8:
+            alert('B입니다.');
+            break;
+        case 7:
+            alert('C입니다.');
+            break;
+        case 6:
+            alert('D입니다.');
+            break;
+        default:
+            alert('F입니다.');      
+    }  */ 
 </script>
 <body>
     <h1>JS 조건문</h1>
+    <hr>
+    <h1>JS 반복문</h1>
+    <script>
+       /*
+       let num = 1; // 초기식 //
+        while( num <= number ) { // 조건식 //
+            document.write( num + '<br/>' );
+            num++; // 변경식 //
+        }
+        for ( let num = 1; num <= number; num++ ) {
+            document.write( num + '<br/>' );
+        }
+*/
+        let sum = 0;
+        let i = 0;
+        //while( i <= 100 ) {
+        for( i=0; i <= 100; i++ )
+         
+            if (i % 2 === 0) continue;
+                sum += i;
+            }
+            i++; 
+        
+        document.write( sum + '<br>' );
+    }
+    </script>
 </body>
 </html>
