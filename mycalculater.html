@@ -6,10 +6,19 @@
 <title>Heart Calculator</title>
 
 <style>
-/* Hearty Beltime 폰트 등록 */
+/* 기존 Hearty Beltime 폰트 */
 @font-face {
     font-family: 'Hearty Beltime';
     src: url('./fonts/Hearty Beltime.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* 새로 추가한 Buffy Light 폰트 */
+@font-face {
+    font-family: 'Buffy';
+    src: url('./fonts/Buffy-Light.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -33,7 +42,7 @@ body {
     padding-top: 15px;
 }
 
-/* 제목 위치: 기존보다 55px 아래 */
+/* 제목: 기존 폰트와 위치 유지 */
 h1 {
     margin: 0 0 10px;
     font-family: 'Hearty Beltime', cursive;
@@ -42,7 +51,7 @@ h1 {
     color: black;
     white-space: nowrap;
     position: relative;
-    top: 35px;
+    top: 55px;
     z-index: 3;
 }
 
@@ -86,11 +95,11 @@ h1 {
     justify-content: center;
 }
 
-/* 수식 표시 */
+/* 계산 과정: Buffy Light 적용 */
 #history {
     width: 100%;
     height: 2cqw;
-    font-family: 'Hearty Beltime', cursive;
+    font-family: 'Buffy', sans-serif;
     font-size: 1.5cqw;
     color: #a66bb5;
     text-align: right;
@@ -98,7 +107,7 @@ h1 {
     white-space: nowrap;
 }
 
-/* 결과 표시 */
+/* 계산 결과: Buffy Light 적용 */
 #display {
     width: 100%;
     height: 3.8cqw;
@@ -106,7 +115,7 @@ h1 {
     outline: none;
     background: transparent;
     color: #a45cba;
-    font-family: 'Hearty Beltime', cursive;
+    font-family: 'Buffy', sans-serif;
     font-size: 2.7cqw;
     text-align: right;
     padding: 0;
@@ -117,7 +126,7 @@ h1 {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-auto-rows: 7.2cqw;
+    grid-auto-rows: 7.7cqw;
     gap: 0.9cqw;
 }
 
@@ -277,7 +286,7 @@ function inputNumber(num) {
     }
 }
 
-// 소수점
+// 소수점 입력
 function inputDecimal() {
     if (display.value === 'Error') {
         clearAll();
@@ -296,7 +305,7 @@ function inputDecimal() {
     }
 }
 
-// 연산자
+// 연산자 입력
 function setOperator(op) {
     if (display.value === 'Error') return;
 
@@ -377,7 +386,7 @@ function percent() {
     );
 }
 
-// 키보드 사용
+// 키보드 입력
 document.addEventListener('keydown', function(e) {
     if (e.key >= '0' && e.key <= '9') {
         inputNumber(e.key);
@@ -401,4 +410,5 @@ document.addEventListener('keydown', function(e) {
 
 </body>
 </html>
+
 
