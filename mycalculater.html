@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>나만의 핑크 계산기</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #fff1f6;
+            font-family: Arial, sans-serif;
+        }
+
+        .calculator {
+            width: 330px;
+            max-width: 95vw;
+            padding: 25px;
+            border-radius: 25px;
+            background: #f9dce7;
+            box-shadow: 0 10px 30px #dba7bb66;
+        }
+
+        h2 {
+            text-align: center;
+            color: #a45475;
+            margin-top: 0;
+        }
+
+        .screen {
+            background: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 15px;
+        }
+
+        #history {
+            width: 100%;
+            height: 25px;
+            border: none;
+            text-align: right;
+            color: #b98a9d;
+            background: transparent;
+        }
+
+        #display {
+            width: 100%;
+            height: 55px;
+            border: none;
+            text-align: right;
+            font-size: 32px;
+            color: #79415b;
+            background: transparent;
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        button {
+            height: 58px;
+            border: none;
+            border-radius: 15px;
+            background: white;
+            color: #79415b;
+            font-size: 20px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background: #ffe5ef;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        .operator {
+            background: #f3b6ce;
+        }
+
+        .special {
+            background: #eec6d6;
+        }
+
+        .equal {
+            background: #dc7fa3;
+            color: white;
+        }
+
+        .equal:hover {
+            background: #ca648c;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #ab7189;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+    <form class="calculator" onsubmit="return false;">
+        <h2>♥ PINK CALCULATOR ♥</h2>
+
+        <div class="screen">
+            <input type="text" id="history" readonly>
+            <input type="text" id="display" value="0" readonly>
+        </div>
+
+        <div class="buttons">
+            <button type="button" class="special" onclick="clearAll()">AC</button>
+            <button type="button" class="special" onclick="changeSign()">±</button>
+            <button type="button" class="special" onclick="percent()">%</button>
+            <button type="button" class="operator" onclick="setOperator('/')">÷</button>
+
+            <button type="button" onclick="inputNumber('7')">7</button>
+            <button type="button" onclick="inputNumber('8')">8</button>
+            <button type="button" onclick="inputNumber('9')">9</button>
+            <button type="button" class="operator" onclick="setOperator('*')">×</button>
+
+            <button type="button" onclick="inputNumber('4')">4</button>
+            <button type="button" onclick="inputNumber('5')">5</button>
+            <button type="button" onclick="inputNumber('6')">6</button>
+            <button type="button" class="operator" onclick="setOperator('-')">−</button>
+
+            <button type="button" onclick="inputNumber('1')">1</button>
+            <button type="button" onclick="inputNumber('2')">2</button>
+            <button type="button" onclick="inputNumber('3')">3</button>
+            <button type="button" class="operator" onclick="setOperator('+')">+</button>
+
+            <button type="button" class="special" onclick="deleteNumber()">⌫</button>
+            <button type="button" onclick="inputNumber('0')">0</button>
+            <button type="button" onclick="inputDecimal()">.</button>
+            <button type="button" class="equal" onclick="calculate()">=</button>
+        </div>
+
+        <div class="footer">Made with ♥</div>
+    </form>
+
+    <script>
+        // 계산에 필요한 변수
+        let firstNumber = null;
+        let operator = null;
+        let newNumber = false;
+
+        const display = document.getElementById('display');
+        const history = document.getElementById('history');
+
+        // 숫자 입력
+        function inputNumber(num) {
+            if (display.value === 'Error' || newNumber) {
+                display.value = num;
+                newNumber = false;
+            } else if (display.value === '0') {
+                display.value = num;
+            } else {
+                display.value += num;
+            }
+        }
+
+        // 소수점 입력
+        function inputDecimal() {
+            if (display.value === 'Error' || newNumber) {
+                display.value = '0.';
+                newNumber = false;
+            } else if (!display.value.includes('.')) {
+                display.value += '.';
+            }
+        }
+
+        // 연산자 선택
+        function setOperator(op) {
+            if (display.value === 'Error') return;
+
+            if (operator !== null && !newNumber) {
+                calculate();
+                if (display.value === 'Error') return;
+            }
+
+            firstNumber = Number(display.value);
+            operator = op;
+            newNumber = true;
+
+            history.value = display.value + ' ' + getSymbol(op);
+        }
+
+        // 연산자 기호 표시
+        function getSymbol(op) {
+            if (op === '*') return '×';
+            if (op === '/') return '÷';
+            if (op === '-') return '−';
+            return '+';
+        }
+
+        // 계산하기 (eval 사용하지 않음)
+        function calculate() {
+            if (operator === null || newNumber) return;
+
+            let secondNumber = Number(display.value);
+            let result;
+
+            if (operator === '+') {
+                result = firstNumber + secondNumber;
+            } else if (operator === '-') {
+                result = firstNumber - secondNumber;
+            } else if (operator === '*') {
+                result = firstNumber * secondNumber;
+            } else if (operator === '/') {
+                if (secondNumber === 0) {
+                    display.value = 'Error';
+                    history.value = '0으로 나눌 수 없습니다';
+                    firstNumber = null;
+                    operator = null;
+                    newNumber = true;
+                    return;
+                }
+                result = firstNumber / secondNumber;
+            }
+
+            history.value = firstNumber + ' ' +
+                getSymbol(operator) + ' ' +
+                secondNumber + ' =';
+
+            display.value = Number(result.toPrecision(12));
+
+            firstNumber = null;
+            operator = null;
+            newNumber = true;
+        }
+
+        // 전체 초기화
+        function clearAll() {
+            display.value = '0';
+            history.value = '';
+            firstNumber = null;
+            operator = null;
+            newNumber = false;
+        }
+
+        // 한 글자 삭제
+        function deleteNumber() {
+            if (newNumber || display.value === 'Error') {
+                display.value = '0';
+                newNumber = false;
+                return;
+            }
+
+            if (display.value.length <= 1 ||
+                (display.value.length === 2 &&
+                 display.value.startsWith('-'))) {
+                display.value = '0';
+            } else {
+                display.value = display.value.slice(0, -1);
+            }
+        }
+
+        // 양수와 음수 전환
+        function changeSign() {
+            if (display.value === 'Error') return;
+
+            display.value = String(-Number(display.value));
+        }
+
+        // 백분율 계산
+        function percent() {
+            if (display.value === 'Error') return;
+
+            display.value = String(Number(display.value) / 100);
+        }
+
+        // 키보드 입력 지원
+        document.addEventListener('keydown', function(e) {
+            if (e.key >= '0' && e.key <= '9') {
+                inputNumber(e.key);
+            } else if (e.key === '.') {
+                inputDecimal();
+            } else if (['+', '-', '*', '/'].includes(e.key)) {
+                e.preventDefault();
+                setOperator(e.key);
+            } else if (e.key === 'Enter' || e.key === '=') {
+                e.preventDefault();
+                calculate();
+            } else if (e.key === 'Backspace') {
+                e.preventDefault();
+                deleteNumber();
+            } else if (e.key === 'Escape') {
+                clearAll();
+            }
+        });
+    </script>
+</body>
+</html>
