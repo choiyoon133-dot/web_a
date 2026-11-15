@@ -6,16 +6,16 @@
 <title>Heart Calculator</title>
 
 <style>
-/* 기존 Hearty Beltime 폰트 */
+/* 제목과 버튼에 사용하는 폰트 */
 @font-face {
     font-family: 'Hearty Beltime';
-    src: url('./fonts/Hearty Beltime.ttf') format('truetype');
+    src: url('./fonts/Hearty%20Beltime.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
-/* 새로 추가한 Buffy Light 폰트 */
+/* 계산 과정과 결과 숫자에 사용하는 폰트 */
 @font-face {
     font-family: 'Buffy';
     src: url('./fonts/Buffy-Light.ttf') format('truetype');
@@ -42,7 +42,7 @@ body {
     padding-top: 15px;
 }
 
-/* 제목: 기존 폰트와 위치 유지 */
+/* 제목: 기존 디자인 유지 */
 h1 {
     margin: 0 0 10px;
     font-family: 'Hearty Beltime', cursive;
@@ -95,11 +95,12 @@ h1 {
     justify-content: center;
 }
 
-/* 계산 과정: Buffy Light 적용 */
+/* 계산 과정: Buffy Light */
 #history {
     width: 100%;
     height: 2cqw;
     font-family: 'Buffy', sans-serif;
+    font-weight: normal;
     font-size: 1.5cqw;
     color: #a66bb5;
     text-align: right;
@@ -107,7 +108,7 @@ h1 {
     white-space: nowrap;
 }
 
-/* 계산 결과: Buffy Light 적용 */
+/* 결과 숫자: Buffy Light */
 #display {
     width: 100%;
     height: 3.8cqw;
@@ -116,6 +117,7 @@ h1 {
     background: transparent;
     color: #a45cba;
     font-family: 'Buffy', sans-serif;
+    font-weight: normal;
     font-size: 2.7cqw;
     text-align: right;
     padding: 0;
@@ -130,7 +132,7 @@ h1 {
     gap: 0.9cqw;
 }
 
-/* 버튼 디자인 */
+/* 버튼 디자인: 기존 폰트 유지 */
 button {
     min-width: 0;
     border: none;
@@ -410,5 +412,6 @@ document.addEventListener('keydown', function(e) {
 
 </body>
 </html>
+
 
 
