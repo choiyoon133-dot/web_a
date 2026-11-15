@@ -33,6 +33,7 @@ body {
     padding-top: 15px;
 }
 
+/* 제목 위치: 기존보다 55px 아래 */
 h1 {
     margin: 0 0 10px;
     font-family: 'Hearty Beltime', cursive;
@@ -40,6 +41,9 @@ h1 {
     text-align: center;
     color: black;
     white-space: nowrap;
+    position: relative;
+    top: 35px;
+    z-index: 3;
 }
 
 /* 하트와 계산기를 동일한 비율로 조정 */
@@ -397,3 +401,4 @@ document.addEventListener('keydown', function(e) {
 
 </body>
 </html>
+
