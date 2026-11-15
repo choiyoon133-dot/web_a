@@ -6,16 +6,16 @@
 <title>Heart Calculator</title>
 
 <style>
-/* 제목과 버튼에 사용하는 폰트 */
+/* 제목과 버튼 폰트 */
 @font-face {
     font-family: 'Hearty Beltime';
-    src: url('./fonts/Hearty%20Beltime.ttf') format('truetype');
+    src: url('./fonts/Hearty Beltime.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
     font-display: swap;
 }
 
-/* 계산 과정과 결과 숫자에 사용하는 폰트 */
+/* 계산 과정과 결과 숫자 폰트 */
 @font-face {
     font-family: 'Buffy';
     src: url('./fonts/Buffy-Light.ttf') format('truetype');
@@ -39,10 +39,10 @@ body {
     width: 100%;
     max-width: 750px;
     margin: 0 auto;
-    padding-top: 15px;
+    padding-top: 35px;
 }
 
-/* 제목: 기존 디자인 유지 */
+/* 제목: 하트 위쪽에 배치 */
 h1 {
     margin: 0 0 10px;
     font-family: 'Hearty Beltime', cursive;
@@ -51,11 +51,11 @@ h1 {
     color: black;
     white-space: nowrap;
     position: relative;
-    top: 55px;
+    top: 20px;
     z-index: 3;
 }
 
-/* 하트와 계산기를 동일한 비율로 조정 */
+/* 하트와 계산기 비율 */
 .stage {
     position: relative;
     width: 100%;
@@ -82,7 +82,7 @@ h1 {
     transform: translateX(-50%);
 }
 
-/* 현황창 */
+/* 현황창: 기존 크기 유지 */
 .screen {
     width: 100%;
     height: 7.2cqw;
@@ -95,12 +95,11 @@ h1 {
     justify-content: center;
 }
 
-/* 계산 과정: Buffy Light */
+/* 계산 과정: 폰트만 Buffy Light로 변경 */
 #history {
     width: 100%;
     height: 2cqw;
     font-family: 'Buffy', sans-serif;
-    font-weight: normal;
     font-size: 1.5cqw;
     color: #a66bb5;
     text-align: right;
@@ -108,7 +107,7 @@ h1 {
     white-space: nowrap;
 }
 
-/* 결과 숫자: Buffy Light */
+/* 결과 숫자: 폰트만 Buffy Light로 변경 */
 #display {
     width: 100%;
     height: 3.8cqw;
@@ -117,22 +116,21 @@ h1 {
     background: transparent;
     color: #a45cba;
     font-family: 'Buffy', sans-serif;
-    font-weight: normal;
     font-size: 2.7cqw;
     text-align: right;
     padding: 0;
 }
 
-/* 버튼 4열 */
+/* 버튼 4열: 기존 크기로 복구 */
 .buttons {
     width: 100%;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-auto-rows: 7.7cqw;
+    grid-auto-rows: 7.2cqw;
     gap: 0.9cqw;
 }
 
-/* 버튼 디자인: 기존 폰트 유지 */
+/* 버튼 디자인 */
 button {
     min-width: 0;
     border: none;
@@ -153,7 +151,7 @@ button:active {
     transform: scale(0.95);
 }
 
-/* C, = 버튼은 두 칸 */
+/* C와 = 버튼 두 칸 */
 .wide {
     grid-column: span 2;
 }
@@ -388,7 +386,7 @@ function percent() {
     );
 }
 
-// 키보드 입력
+// 키보드 사용
 document.addEventListener('keydown', function(e) {
     if (e.key >= '0' && e.key <= '9') {
         inputNumber(e.key);
@@ -412,6 +410,3 @@ document.addEventListener('keydown', function(e) {
 
 </body>
 </html>
-
-
-
